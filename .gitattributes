@@ -1,0 +1,5 @@
+alibaba-gpu-v2020/*.csv filter=lfs diff=lfs merge=lfs -text
+alibaba-gpu-v2020/*.tar.gz filter=lfs diff=lfs merge=lfs -text
+alibaba-gpu-v2020/*.header -text
+alibaba-gpu-v2020/LICENSE -text -whitespace
+alibaba-gpu-v2020-analysis/figures/*.svg -whitespace

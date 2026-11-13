@@ -1,0 +1,443 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>阿里巴巴 PAI GPU v2020 任务到达与调度粒度报告</title><style>
+:root{color-scheme:light;--text:#192733;--muted:#526477;--line:#d9e1e7;--blue:#185b89}
+*{box-sizing:border-box}body{margin:0;background:#f3f6f9;color:var(--text);font:16px/1.75 'Microsoft YaHei',system-ui,sans-serif}
+main{max-width:1080px;margin:0 auto;padding:54px 54px 80px;background:white}
+h1{font-size:36px;line-height:1.25;margin:0 0 30px;letter-spacing:-.03em}
+h2{font-size:23px;line-height:1.35;margin:44px 0 14px;padding-bottom:9px;border-bottom:1px solid var(--line)}
+p,ul{margin:12px 0 16px}li{padding:3px 0}a{color:var(--blue)}code{font:0.89em Consolas,monospace;overflow-wrap:anywhere;background:#eef3f7;padding:2px 4px}
+table{width:100%;border-collapse:collapse;margin:20px 0;font-size:14px;font-variant-numeric:tabular-nums}
+th,td{padding:9px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+th{background:#eaf1f7;text-align:left}tr:nth-child(even) td{background:#f7f9fb}
+img{display:block;max-width:100%;height:auto;margin:24px auto 30px}
+@media(max-width:760px){main{padding:24px 16px 50px}h1{font-size:28px}table{display:block;overflow-x:auto}}
+@media print{body{background:white}main{max-width:none;padding:0}img,table{break-inside:avoid}h2{break-after:avoid}}
+</style></head><body><main><h1>阿里巴巴 PAI GPU v2020 任务到达与调度粒度报告</h1>
+<p><strong>对于固定步长的 SAC，建议先以 15 秒为基准、5 秒为对照、1 分钟为低频对照。</strong> 5 秒能够保留短时到达突发，但超过一半的 5 秒窗口没有新任务。并发资源比到达量平滑，是否值得每 5 秒行动，应比较排队尾部和单位仿真时间的决策成本。15 分钟可用于上层电力、碳或能量决策，细粒度调度仍需保留原始到达和完成时间。</p>
+<table>
+<thead>
+<tr>
+<th>粒度</th>
+<th style="text-align: right;">每小时决策步数</th>
+<th style="text-align: right;">每窗口平均到达</th>
+<th style="text-align: right;">空窗口</th>
+<th>建议用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>5 秒</td>
+<td style="text-align: right;">720</td>
+<td style="text-align: right;">1.07</td>
+<td style="text-align: right;">53.54%</td>
+<td>响应突发、空闲时继续处理排队和完成事件</td>
+</tr>
+<tr>
+<td>15 秒</td>
+<td style="text-align: right;">240</td>
+<td style="text-align: right;">3.21</td>
+<td style="text-align: right;">26.09%</td>
+<td>固定步长 SAC 基准</td>
+</tr>
+<tr>
+<td>1 分钟</td>
+<td style="text-align: right;">60</td>
+<td style="text-align: right;">12.83</td>
+<td style="text-align: right;">9.25%</td>
+<td>低频计算调度对照</td>
+</tr>
+<tr>
+<td>5 分钟</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">64.16</td>
+<td style="text-align: right;">7.13%</td>
+<td>粗粒度资源观察</td>
+</tr>
+<tr>
+<td>15 分钟</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">192.47</td>
+<td style="text-align: right;">5.67%</td>
+<td>电力和能量层聚合，保留窗口峰值</td>
+</tr>
+</tbody>
+</table>
+<h2>数据与统计口径</h2>
+<ul>
+<li>从官方下载的任务、作业、实例、传感器及机器规格 CSV 计算。主统计使用 <strong>67 个完整北京时间自然日</strong>，即脱敏秒区间 <code>[576000, 6364800)</code>。舍弃两端不完整自然日，保留中间低活动日及全部空窗口。时间只解释为日内时刻、星期或相对天数。</li>
+<li>任务粒度为 <code>(job_name, task_name)</code>。原表 1,261,050 行，1,257,336 行有开始时间，完整日包含 <strong>1,237,992 次任务开始</strong>。到达代理使用 <code>pai_task_table.start_time</code>，即任务表记录的启动时间，另用同期 <strong>1,035,158 次作业提交</strong>复核。到达统计保留短任务和同秒事件，资源字段缺失不影响到达统计。公开的开始时间精度为秒。</li>
+<li>五种窗口都按北京时间午夜对齐，使用左闭右开区间，互不重叠。到达间隔和窗口分布采用经验分位数。并发重建保留与观察区间有重叠的记录，包括在左边界前已启动的任务或实例。</li>
+<li><a href="https://github.com/alibaba/clusterdata/blob/master/cluster-trace-gpu-v2020/README.md">阿里官方字段与时间定义</a> · <a href="https://www.usenix.org/conference/nsdi22/presentation/weng">配套 NSDI 论文</a></li>
+</ul>
+<h2>7.1 相邻任务到达间隔</h2>
+<table>
+<thead>
+<tr>
+<th>口径</th>
+<th style="text-align: right;">最小</th>
+<th style="text-align: right;">平均</th>
+<th style="text-align: right;">P50</th>
+<th style="text-align: right;">P90</th>
+<th style="text-align: right;">P95</th>
+<th style="text-align: right;">P99</th>
+<th style="text-align: right;">&lt; 5 秒</th>
+<th style="text-align: right;">&lt; 15 秒</th>
+<th style="text-align: right;">&lt; 60 秒</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>全部任务开始，67 个完整日</td>
+<td style="text-align: right;">0 秒</td>
+<td style="text-align: right;">4.67 秒</td>
+<td style="text-align: right;">2 秒</td>
+<td style="text-align: right;">11 秒</td>
+<td style="text-align: right;">18 秒</td>
+<td style="text-align: right;">39 秒</td>
+<td style="text-align: right;">74.99%</td>
+<td style="text-align: right;">92.85%</td>
+<td style="text-align: right;">99.71%</td>
+</tr>
+<tr>
+<td>每个到达秒只计一次</td>
+<td style="text-align: right;">1 秒</td>
+<td style="text-align: right;">6.61 秒</td>
+<td style="text-align: right;">3 秒</td>
+<td style="text-align: right;">15 秒</td>
+<td style="text-align: right;">22 秒</td>
+<td style="text-align: right;">44 秒</td>
+<td style="text-align: right;">64.64%</td>
+<td style="text-align: right;">89.89%</td>
+<td style="text-align: right;">99.59%</td>
+</tr>
+<tr>
+<td>作业提交，67 个完整日</td>
+<td style="text-align: right;">0 秒</td>
+<td style="text-align: right;">5.59 秒</td>
+<td style="text-align: right;">2 秒</td>
+<td style="text-align: right;">14 秒</td>
+<td style="text-align: right;">21 秒</td>
+<td style="text-align: right;">43 秒</td>
+<td style="text-align: right;">68.28%</td>
+<td style="text-align: right;">90.58%</td>
+<td style="text-align: right;">99.62%</td>
+</tr>
+<tr>
+<td>全部有效任务开始，含首尾不完整日</td>
+<td style="text-align: right;">0 秒</td>
+<td style="text-align: right;">4.74 秒</td>
+<td style="text-align: right;">2 秒</td>
+<td style="text-align: right;">11 秒</td>
+<td style="text-align: right;">18 秒</td>
+<td style="text-align: right;">39 秒</td>
+<td style="text-align: right;">74.97%</td>
+<td style="text-align: right;">92.83%</td>
+<td style="text-align: right;">99.71%</td>
+</tr>
+</tbody>
+</table>
+<p>主样本中 29.28% 的相邻间隔为 0 秒，说明这些记录的时间戳相同。即使每秒只计一次，仍有近三分之二的间隔短于 5 秒。最长观测间隔为 <strong>29,463 秒（约 8.18 小时）</strong>，出现在第 1 个完整日。首日仅 17 次到达，数据本身无法判定这段低活动来自业务、追踪覆盖还是两者共同作用。</p>
+<p><img alt="图 1 到达间隔与窗口" src="figures/01_到达间隔与窗口.png" /></p>
+<h2>7.2 每个固定窗口的任务数量</h2>
+<table>
+<thead>
+<tr>
+<th>窗口</th>
+<th style="text-align: right;">窗口数</th>
+<th style="text-align: right;">平均</th>
+<th style="text-align: right;">P50</th>
+<th style="text-align: right;">P90</th>
+<th style="text-align: right;">P95</th>
+<th style="text-align: right;">P99</th>
+<th style="text-align: right;">最大</th>
+<th style="text-align: right;">空窗口</th>
+<th style="text-align: right;">至少 2 个任务</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>5 秒</td>
+<td style="text-align: right;">1,157,760</td>
+<td style="text-align: right;">1.07</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">304</td>
+<td style="text-align: right;">53.54%</td>
+<td style="text-align: right;">22.05%</td>
+</tr>
+<tr>
+<td>15 秒</td>
+<td style="text-align: right;">385,920</td>
+<td style="text-align: right;">3.21</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">27</td>
+<td style="text-align: right;">360</td>
+<td style="text-align: right;">26.09%</td>
+<td style="text-align: right;">55.94%</td>
+</tr>
+<tr>
+<td>1 分钟</td>
+<td style="text-align: right;">96,480</td>
+<td style="text-align: right;">12.83</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">26</td>
+<td style="text-align: right;">39</td>
+<td style="text-align: right;">77</td>
+<td style="text-align: right;">626</td>
+<td style="text-align: right;">9.25%</td>
+<td style="text-align: right;">88.25%</td>
+</tr>
+<tr>
+<td>5 分钟</td>
+<td style="text-align: right;">19,296</td>
+<td style="text-align: right;">64.16</td>
+<td style="text-align: right;">52</td>
+<td style="text-align: right;">120</td>
+<td style="text-align: right;">158</td>
+<td style="text-align: right;">311.1</td>
+<td style="text-align: right;">939</td>
+<td style="text-align: right;">7.13%</td>
+<td style="text-align: right;">92.28%</td>
+</tr>
+<tr>
+<td>15 分钟</td>
+<td style="text-align: right;">6,432</td>
+<td style="text-align: right;">192.47</td>
+<td style="text-align: right;">166</td>
+<td style="text-align: right;">339</td>
+<td style="text-align: right;">434</td>
+<td style="text-align: right;">798.83</td>
+<td style="text-align: right;">2,004</td>
+<td style="text-align: right;">5.67%</td>
+<td style="text-align: right;">93.47%</td>
+</tr>
+</tbody>
+</table>
+<p>空窗口比例的分母是全部固定窗口。5 秒窗口起点分别平移 0 至 4 秒后，空窗口比例在 <strong>53.51%–53.56%</strong> 之间。只看有任务的 15 分钟窗口，其中的 5 秒子窗口仍有 <strong>50.74%</strong> 无新任务。改用作业提交时，5 秒空窗口比例为 <strong>57.90%</strong>。空窗口只表示无新到达，调度器仍可能面对排队任务、运行任务和完成事件。</p>
+<h2>7.3 日内分布与突发性</h2>
+<p>北京时间 <strong>00:00–01:00</strong> 的总到达量最高，约为最低的 <strong>23:00–24:00 的 2.04 倍</strong>。完整日的到达量中位数为 <strong>18,630</strong>，P95 为 <strong>26,191</strong>，最大为 <strong>60,841</strong>。最初六个完整日各只有 17–1,201 次到达。保留这些天作为主口径，并在下文报告剔除它们后的敏感性结果。</p>
+<p>去掉最初六个低活动日后，任务间隔小于 5 秒的占比仍为 <strong>75.04%</strong>，5 秒方差均值比为 <strong>5.23</strong>，最高仍为 <strong>304 个任务 / 5 秒</strong>。五种窗口的空窗口比例依次降为 <strong>49.08%、19.08%、1.03%、0%、0%</strong>。较长窗口的空窗统计对这段追踪边界尤其敏感。</p>
+<p>以窗口任务数的方差除以均值衡量离散程度，5 秒为 <strong>5.33</strong>，15 秒为 <strong>9.48</strong>，1 分钟为 <strong>19.50</strong>，5 分钟为 <strong>55.26</strong>，15 分钟为 <strong>133.77</strong>。同均值齐次泊松过程的理论值为 1，5 秒空窗口理论值为 <strong>34.32%</strong>。为考虑较慢的负载变化，再固定每个 15 分钟窗口实际任务总数，让每个任务独立、均匀地落到窗口内。这个基线预计 <strong>43.05%</strong> 的 5 秒子窗口为空，实际为 <strong>53.54%</strong>，相对于条件基线的方差为 <strong>4.61 倍</strong>。因此，15 分钟之间的流量变化只能解释部分短时集中。这个比较是描述性的，既包括业务集中，也可能包括同一作业拆出的任务或追踪记录方式造成的同秒集中。作业口径的条件离散比仍为 <strong>4.79</strong>。</p>
+<p>最繁忙的 1% 的 5 秒窗口承载 <strong>16.08%</strong> 的任务。第 61 个完整日 10:49:30 开始的 5 秒内记录了 <strong>304 个任务</strong>，也是作业口径下的峰值。在至少到达 30 个任务的 5,864 个 15 分钟窗口中，最繁忙的 1 分钟通常承载该窗口 <strong>16.0%</strong> 的任务，P95 为 <strong>33.96%</strong>，有 <strong>0.87%</strong> 的窗口把一半以上的任务集中在同一分钟。一个具体例子是第 51 个完整日 05:45–06:00，共 <strong>368 个任务</strong>，其中第 14 分钟到达 <strong>311 个（84.51%）</strong>。</p>
+<p><img alt="图 2 日内周期与突发" src="figures/02_日内周期与突发.png" /></p>
+<h2>7.4 任务异质性</h2>
+<p>时长以任务表 <code>end_time - start_time</code> 计算，统计在完整日内开始、状态为 <code>Terminated</code> 且时长为正的 <strong>870,029 个任务</strong>。这个时长从任务表的启动时刻起算，可能包含实例启动前的等待。区间短于 1 分钟、1 至不足 15 分钟、15 至不足 60 分钟、至少 60 分钟的占比依次为 <strong>15.71%、39.11%、19.67%、25.51%</strong>。若沿用仓库示例中过滤掉 15 分钟以下任务的规则，将移除该成功样本的 <strong>54.82%</strong>。</p>
+<p>使用量先通过 <code>worker_name</code> 匹配实例和传感器，再在任务内对各实例的生命周期均值求和。<strong>574,790</strong> 个成功任务匹配到至少一条传感器记录，占成功样本的 <strong>66.1%</strong>。每项指标保留有该指标观测的任务。求和体现所覆盖实例的资源规模，实例起止不同，不能把这个和解释成某一秒的同时峰值。网络输入使用 <code>read / 2^30</code>。为对应仓库字段，同时报告 <code>bandwidth_gb = (read + write) / 2^30</code>。两者均来自生命周期内的网络传感汇总，单位按换算为 GiB，无法直接当作单次任务累计输入量或 Gb/s。</p>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th style="text-align: right;">有效任务数</th>
+<th style="text-align: right;">P50</th>
+<th style="text-align: right;">P90</th>
+<th style="text-align: right;">P95</th>
+<th style="text-align: right;">P99</th>
+<th style="text-align: right;">与任务时长的 Spearman ρ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>任务时长（分钟）</td>
+<td style="text-align: right;">870,029</td>
+<td style="text-align: right;">10.8</td>
+<td style="text-align: right;">211.4</td>
+<td style="text-align: right;">397.4</td>
+<td style="text-align: right;">1,145.9</td>
+<td style="text-align: right;">—</td>
+</tr>
+<tr>
+<td>CPU 平均使用（vCPU 核）</td>
+<td style="text-align: right;">573,548</td>
+<td style="text-align: right;">1.43</td>
+<td style="text-align: right;">27.56</td>
+<td style="text-align: right;">45.11</td>
+<td style="text-align: right;">139.49</td>
+<td style="text-align: right;">0.529</td>
+</tr>
+<tr>
+<td>GPU 平均使用（GPU 等效算力）</td>
+<td style="text-align: right;">574,790</td>
+<td style="text-align: right;">0.034</td>
+<td style="text-align: right;">0.751</td>
+<td style="text-align: right;">1.815</td>
+<td style="text-align: right;">6.037</td>
+<td style="text-align: right;">0.367</td>
+</tr>
+<tr>
+<td>平均内存（GB）</td>
+<td style="text-align: right;">574,456</td>
+<td style="text-align: right;">3.88</td>
+<td style="text-align: right;">29.92</td>
+<td style="text-align: right;">82.66</td>
+<td style="text-align: right;">327.28</td>
+<td style="text-align: right;">0.698</td>
+</tr>
+<tr>
+<td>平均显存（GB）</td>
+<td style="text-align: right;">574,790</td>
+<td style="text-align: right;">0.756</td>
+<td style="text-align: right;">9.114</td>
+<td style="text-align: right;">18.880</td>
+<td style="text-align: right;">111.976</td>
+<td style="text-align: right;">0.439</td>
+</tr>
+<tr>
+<td>网络输入（GiB）</td>
+<td style="text-align: right;">574,790</td>
+<td style="text-align: right;">0.043</td>
+<td style="text-align: right;">0.868</td>
+<td style="text-align: right;">2.296</td>
+<td style="text-align: right;">24.655</td>
+<td style="text-align: right;">−0.078</td>
+</tr>
+<tr>
+<td><code>bandwidth_gb</code>，网络读写合计（GiB）</td>
+<td style="text-align: right;">574,790</td>
+<td style="text-align: right;">0.075</td>
+<td style="text-align: right;">1.122</td>
+<td style="text-align: right;">2.670</td>
+<td style="text-align: right;">28.294</td>
+<td style="text-align: right;">−0.090</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>短任务与长任务。</strong> 少于 1 分钟的有监测任务中，CPU 和内存中位数为 <strong>0.77 vCPU 核、0.39 GB</strong>，至少 60 分钟的对应为 <strong>7.63 核、13.48 GB</strong>。GPU 等效使用中位数分别为 <strong>0、0.106</strong>。</li>
+<li><strong>小任务与大任务。</strong> 以单实例和多实例作为任务规模口径。成功任务中有 <strong>672,000</strong> 个单实例、<strong>198,029</strong> 个多实例。申请量中位数分别为 <strong>6 对 60 vCPU 核、1 对 5 张 GPU、29.30 对 195.31 GB 内存</strong>。GPU 申请只用有记录的样本。多实例任务的观测 CPU 使用中位数为 <strong>10.11 核</strong>，单实例为 <strong>1.18 核</strong>。</li>
+<li><strong>CPU 与 GPU 密集程度。</strong> 取任务级观测平均使用量达到 <strong>4 vCPU 核</strong>或 <strong>1 GPU 等效算力</strong>为操作阈值。573,548 个两项都有值的任务里，<strong>23.07%</strong> 仅达到 CPU 阈值，<strong>0.82%</strong> 仅达到 GPU 阈值，<strong>6.77%</strong> 两项都达到，<strong>69.35%</strong> 均未达到。比例依赖阈值和监测覆盖，可用来构造仿真负载类型。</li>
+<li><strong>覆盖敏感性。</strong> 仅保留实例数与 <code>inst_num</code> 一致、且每个纳入实例都有传感器记录的 <strong>466,728</strong> 个任务，CPU、GPU、内存、显存和网络输入与时长的 ρ 分别为 <strong>0.516、0.343、0.740、0.432、−0.222</strong>。时长和内存的正相关较强，网络相关性对样本口径更敏感。</li>
+</ul>
+<p><img alt="图 3 任务异质性" src="figures/03_任务异质性.png" /></p>
+<h2>7.5 并发与资源随时间变化</h2>
+<p>任务并发按任务表的 <code>[start_time, end_time)</code>，实例并发按实例表的 <code>[start_time, end_time)</code> 计算。每条有效记录在开始秒加 1、结束秒减 1，再按秒累加。资源申请使用运行实例继承的任务级每实例申请量，<code>plan_cpu / 100</code> 得到 vCPU 核，<code>plan_gpu / 100</code> 得到 GPU 张数。使用量曲线将每条实例的监测生命周期均值铺回对应的活动区间，反映监测子样本的近似负载。</p>
+<table>
+<thead>
+<tr>
+<th>逐秒指标</th>
+<th style="text-align: right;">平均</th>
+<th style="text-align: right;">P50</th>
+<th style="text-align: right;">P95</th>
+<th style="text-align: right;">P99</th>
+<th style="text-align: right;">最大</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>并发任务</td>
+<td style="text-align: right;">843</td>
+<td style="text-align: right;">889</td>
+<td style="text-align: right;">1,251</td>
+<td style="text-align: right;">1,428</td>
+<td style="text-align: right;">1,723</td>
+</tr>
+<tr>
+<td>并发实例</td>
+<td style="text-align: right;">5,383</td>
+<td style="text-align: right;">5,745</td>
+<td style="text-align: right;">7,796</td>
+<td style="text-align: right;">8,450</td>
+<td style="text-align: right;">10,174</td>
+</tr>
+<tr>
+<td>已知 CPU 申请（vCPU 核）</td>
+<td style="text-align: right;">34,495</td>
+<td style="text-align: right;">37,257</td>
+<td style="text-align: right;">48,934</td>
+<td style="text-align: right;">53,326</td>
+<td style="text-align: right;">60,679</td>
+</tr>
+<tr>
+<td>已知 GPU 申请（张）</td>
+<td style="text-align: right;">2,394</td>
+<td style="text-align: right;">2,603</td>
+<td style="text-align: right;">3,294</td>
+<td style="text-align: right;">3,486</td>
+<td style="text-align: right;">3,975.05</td>
+</tr>
+<tr>
+<td>监测子样本近似 CPU 使用（vCPU 核）</td>
+<td style="text-align: right;">9,885</td>
+<td style="text-align: right;">12,005</td>
+<td style="text-align: right;">17,847</td>
+<td style="text-align: right;">20,544</td>
+<td style="text-align: right;">27,670</td>
+</tr>
+<tr>
+<td>监测子样本近似 GPU 使用（GPU 等效算力）</td>
+<td style="text-align: right;">520</td>
+<td style="text-align: right;">635</td>
+<td style="text-align: right;">904</td>
+<td style="text-align: right;">1,009</td>
+<td style="text-align: right;">1,138</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>主口径有 <strong>895,682 个任务区间</strong>、<strong>4,661,375 个有机器且起止时间有效的实例区间</strong>，其中 3,690,629 个有 GPU 申请值，1,983,687 个匹配到传感器。有效 CPU/GPU 监测各覆盖约 <strong>42.6%</strong> 的纳入实例运行秒数。</li>
+<li>在已知 GPU 申请峰值的那一秒，观测到 <strong>1,112 个并发任务、7,914 个并发实例</strong>。5 秒到达量与同窗平均 GPU 申请的秩相关为 <strong>0.260</strong>。窗口到达量只反映新增任务，资源状态还取决于此前已经在运行的实例。</li>
+<li>15 分钟最大平均 GPU 申请比逐秒全期峰值低 <strong>5.75%</strong>。逐个比较有正负载的 15 分钟窗口，GPU 申请峰值与该窗口均值之比的 P95 为 <strong>1.061</strong>。图 5 选自 GPU 峰值最高的 5% 窗口，并在其中取峰值与均值之比最大的窗口。该窗口的峰值为 <strong>3,717.60 张</strong>，均值为 <strong>3,072.56 张</strong>，相差约 <strong>21.0%</strong>（以均值为分母）。</li>
+<li>已知区间的 GPU 申请未超过规格表的 <strong>6,742 张</strong>名义库存。这个比较没有计入缺失 GPU 申请、未知结束时间、排队需求、卡型与节点局部约束，因而无法判断实际是否出现资源不足。把 <strong>105,446 条</strong>有机器、有开始时间、状态为 <code>Running</code> 且缺结束时间的实例全部延长到观察期末，会得到 <strong>31,422.69 张</strong>的敏感性情景峰值。该数值体现缺失结束时间对持续占用假设的影响，不能作为真实峰值。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>固定窗口宽度</th>
+<th style="text-align: right;">窗口平均任务并发的最大值</th>
+<th style="text-align: right;">窗口平均实例并发的最大值</th>
+<th style="text-align: right;">窗口平均 CPU 申请的最大值（核）</th>
+<th style="text-align: right;">窗口平均 GPU 申请的最大值（张）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1 秒</td>
+<td style="text-align: right;">1,723.0</td>
+<td style="text-align: right;">10,174.0</td>
+<td style="text-align: right;">60,679.0</td>
+<td style="text-align: right;">3,975.05</td>
+</tr>
+<tr>
+<td>5 秒</td>
+<td style="text-align: right;">1,722.4</td>
+<td style="text-align: right;">10,168.6</td>
+<td style="text-align: right;">60,634.6</td>
+<td style="text-align: right;">3,968.25</td>
+</tr>
+<tr>
+<td>15 秒</td>
+<td style="text-align: right;">1,721.9</td>
+<td style="text-align: right;">10,157.2</td>
+<td style="text-align: right;">60,415.1</td>
+<td style="text-align: right;">3,959.97</td>
+</tr>
+<tr>
+<td>1 分钟</td>
+<td style="text-align: right;">1,720.7</td>
+<td style="text-align: right;">10,146.2</td>
+<td style="text-align: right;">59,886.2</td>
+<td style="text-align: right;">3,954.22</td>
+</tr>
+<tr>
+<td>5 分钟</td>
+<td style="text-align: right;">1,700.5</td>
+<td style="text-align: right;">9,930.1</td>
+<td style="text-align: right;">59,334.5</td>
+<td style="text-align: right;">3,912.97</td>
+</tr>
+<tr>
+<td>15 分钟</td>
+<td style="text-align: right;">1,695.7</td>
+<td style="text-align: right;">9,751.4</td>
+<td style="text-align: right;">58,706.0</td>
+<td style="text-align: right;">3,746.50</td>
+</tr>
+</tbody>
+</table>
+<p><img alt="图 4 全程并发与资源" src="figures/04_全程并发与资源.png" /></p>
+<p><img alt="图 5 十五分钟内的资源峰值" src="figures/05_十五分钟内的资源峰值.png" /></p>
+<h2>时间步长怎么选</h2>
+<p>用同一批到达、时长和资源记录分别跑 <strong>5 秒、15 秒、60 秒</strong>，比较队列等待 P95/P99、超期率、可调度吞吐、GPU 峰值误差和每模拟小时计算成本。保持每秒折扣率一致，例如令 <code>gamma(Δt) = gamma(15s)^(Δt/15s)</code>，资源成本按实际经过时间积分，以免不同步长改变目标函数。对于接近秒级 SLA 或确实需要响应尖峰的子问题，可以在 5 秒模型外增加按到达和完成触发的对照。15 分钟层可同时传递资源均值和区间峰值，避免用一个平均值代替调度状态。</p>
+<p>复算入口为 <code>python analyze.py</code>。脚本读取同级目录下的 <code>alibaba-gpu-v2020</code> 原始数据，并生成 <code>metrics.json</code> 和绘图数据 <code>figure_data.npz</code>。运行 <code>python plot.py</code> 可重绘 PNG、矢量 PDF 和 SVG。</p></main></body></html>
