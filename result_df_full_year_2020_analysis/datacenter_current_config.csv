@@ -1,0 +1,6 @@
+﻿dc_id,location,timezone_shift,population_weight,total_cores,total_gpus,total_mem,dc_config_file
+1,US-CAL-CISO,-7,0.18,50000,1000,80000,configs/dcs/dc_config.json
+2,DE-LU,1,0.22,85000,600,80000,configs/dcs/dc_config.json
+3,CL-SIC,-5,0.2,110000,300,60000,configs/dcs/dc_config.json
+4,SG,8,0.25,75000,700,50000,configs/dcs/dc_config.json
+5,AU-NSW,11,0.15,65000,300,60000,configs/dcs/dc_config.json

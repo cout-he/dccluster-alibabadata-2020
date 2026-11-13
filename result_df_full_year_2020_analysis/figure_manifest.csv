@@ -1,0 +1,32 @@
+﻿figure,claim,source_data,font,alignment,width_mm
+duration_min_hist,保留完整范围、包含零值的单任务分布,task_statistics.csv; PKL base cycle,Microsoft YaHei,single-panel; not applicable,180
+duration_min_cdf,完整样本经验CDF,task_statistics.csv; PKL base cycle,Microsoft YaHei,single-panel; not applicable,180
+cpu_usage_hist,保留完整范围、包含零值的单任务分布,task_statistics.csv; PKL base cycle,Microsoft YaHei,single-panel; not applicable,180
+cpu_usage_cdf,完整样本经验CDF,task_statistics.csv; PKL base cycle,Microsoft YaHei,single-panel; not applicable,180
+gpu_wrk_util_hist,保留完整范围、包含零值的单任务分布,task_statistics.csv; PKL base cycle,Microsoft YaHei,single-panel; not applicable,180
+gpu_wrk_util_cdf,完整样本经验CDF,task_statistics.csv; PKL base cycle,Microsoft YaHei,single-panel; not applicable,180
+avg_mem_hist,保留完整范围、包含零值的单任务分布,task_statistics.csv; PKL base cycle,Microsoft YaHei,single-panel; not applicable,180
+avg_mem_cdf,完整样本经验CDF,task_statistics.csv; PKL base cycle,Microsoft YaHei,single-panel; not applicable,180
+avg_gpu_wrk_mem_hist,保留完整范围、包含零值的单任务分布,task_statistics.csv; PKL base cycle,Microsoft YaHei,single-panel; not applicable,180
+avg_gpu_wrk_mem_cdf,完整样本经验CDF,task_statistics.csv; PKL base cycle,Microsoft YaHei,single-panel; not applicable,180
+bandwidth_gb_hist,保留完整范围、包含零值的单任务分布,task_statistics.csv; PKL base cycle,Microsoft YaHei,single-panel; not applicable,180
+bandwidth_gb_cdf,完整样本经验CDF,task_statistics.csv; PKL base cycle,Microsoft YaHei,single-panel; not applicable,180
+arrival_timeseries,49天范围的到达波动,arrival_timeseries_15min.csv,Microsoft YaHei,single-panel; not applicable,180
+arrival_granularity,批量到达改变细粒度峰值,arrival_statistics.csv,Microsoft YaHei,single-panel; not applicable,180
+arrival_count_cdfs,含空时隙的多粒度CDF,arrival_count_distribution.csv,Microsoft YaHei,single-panel; not applicable,180
+arrival_hour,每个小时除以49个观测日,arrival_calendar_profiles.csv,Microsoft YaHei,single-panel; not applicable,180
+arrival_weekday,星期由重建日期重新计算，不能作原始行为解释,arrival_calendar_profiles.csv,Microsoft YaHei,single-panel; not applicable,180
+arrival_daily,49天的逐日异质性,arrival_calendar_profiles.csv,Microsoft YaHei,single-panel; not applicable,180
+interarrival_exact_cdf,包含同时到达的零间隔,interarrival_statistics.csv,Microsoft YaHei,single-panel; not applicable,180
+interarrival_sim_cdf,包含同时到达的零间隔,interarrival_statistics.csv,Microsoft YaHei,single-panel; not applicable,180
+concurrency_cpu,周期稳态；展示每15分钟内精确峰值，统计表按持续秒数加权,concurrency_timeseries_*_periodic.csv,Microsoft YaHei,single-panel; not applicable,180
+concurrency_gpu,周期稳态；展示每15分钟内精确峰值，统计表按持续秒数加权,concurrency_timeseries_*_periodic.csv,Microsoft YaHei,single-panel; not applicable,180
+concurrency_memory,周期稳态；展示每15分钟内精确峰值，统计表按持续秒数加权,concurrency_timeseries_*_periodic.csv,Microsoft YaHei,single-panel; not applicable,180
+concurrency_gpu_memory,周期稳态；展示每15分钟内精确峰值，统计表按持续秒数加权,concurrency_timeseries_*_periodic.csv,Microsoft YaHei,single-panel; not applicable,180
+concurrency_tasks,周期稳态；展示每15分钟内精确峰值，统计表按持续秒数加权,concurrency_timeseries_*_periodic.csv,Microsoft YaHei,single-panel; not applicable,180
+resource_correlation,原始资源与持续时间的单调关系,correlation_spearman.csv,Microsoft YaHei,single-panel; not applicable,180
+gpu_vs_gpu_memory,使用全量基础周期记录，未删去零GPU记录,PKL base cycle,Microsoft YaHei,single-panel; not applicable,180
+datacenter_cpu_cores,柱为十种子均值，误差线为种子最小至最大值,datacenter_seed_statistics.csv,Microsoft YaHei,single-panel; not applicable,180
+datacenter_gpu_equiv,柱为十种子均值，误差线为种子最小至最大值,datacenter_seed_statistics.csv,Microsoft YaHei,single-panel; not applicable,180
+datacenter_memory_gb,柱为十种子均值，误差线为种子最小至最大值,datacenter_seed_statistics.csv,Microsoft YaHei,single-panel; not applicable,180
+datacenter_origins,十种子均值和完整波动范围；来源不等于执行位置,datacenter_origin_counts.csv,Microsoft YaHei,single-panel; not applicable,180

@@ -1,0 +1,1087 @@
+[
+  {
+    "figure": "arrival_count_cdfs.pdf",
+    "text": {
+      "auditable": true,
+      "minimum_required_pt": 5.0,
+      "minimum_found_pt": 5.6,
+      "text_run_count": 11,
+      "below_minimum_count": 0,
+      "below_minimum": [],
+      "warnings": []
+    },
+    "collision": {
+      "pdf": "analysis\\workload_profile\\figures\\arrival_count_cdfs.pdf",
+      "auditable": true,
+      "verdict": "PASS",
+      "page_count": 1,
+      "visible_text_box_count": 19,
+      "text_trace_count": 22,
+      "stroke_path_count": 30,
+      "filled_region_count": 12,
+      "image_region_count": 0,
+      "summary": {
+        "fail": 0,
+        "warn": 0,
+        "contained_fill_overlays": 0,
+        "contained_image_overlays": 0
+      },
+      "thresholds": {
+        "text_inset_pt": 0.6,
+        "min_overlap_ratio": 0.05,
+        "clipping_tolerance_pt": 0.5
+      },
+      "findings": []
+    }
+  },
+  {
+    "figure": "arrival_daily.pdf",
+    "text": {
+      "auditable": true,
+      "minimum_required_pt": 5.0,
+      "minimum_found_pt": 8.0,
+      "text_run_count": 5,
+      "below_minimum_count": 0,
+      "below_minimum": [],
+      "warnings": []
+    },
+    "collision": {
+      "pdf": "analysis\\workload_profile\\figures\\arrival_daily.pdf",
+      "auditable": true,
+      "verdict": "PASS",
+      "page_count": 1,
+      "visible_text_box_count": 16,
+      "text_trace_count": 16,
+      "stroke_path_count": 22,
+      "filled_region_count": 15,
+      "image_region_count": 0,
+      "summary": {
+        "fail": 0,
+        "warn": 0,
+        "contained_fill_overlays": 0,
+        "contained_image_overlays": 0
+      },
+      "thresholds": {
+        "text_inset_pt": 0.6,
+        "min_overlap_ratio": 0.05,
+        "clipping_tolerance_pt": 0.5
+      },
+      "findings": []
+    }
+  },
+  {
+    "figure": "arrival_granularity.pdf",
+    "text": {
+      "auditable": true,
+      "minimum_required_pt": 5.0,
+      "minimum_found_pt": 8.0,
+      "text_run_count": 6,
+      "below_minimum_count": 0,
+      "below_minimum": [],
+      "warnings": []
+    },
+    "collision": {
+      "pdf": "analysis\\workload_profile\\figures\\arrival_granularity.pdf",
+      "auditable": true,
+      "verdict": "PASS",
+      "page_count": 1,
+      "visible_text_box_count": 19,
+      "text_trace_count": 19,
+      "stroke_path_count": 42,
+      "filled_region_count": 30,
+      "image_region_count": 0,
+      "summary": {
+        "fail": 0,
+        "warn": 0,
+        "contained_fill_overlays": 0,
+        "contained_image_overlays": 0
+      },
+      "thresholds": {
+        "text_inset_pt": 0.6,
+        "min_overlap_ratio": 0.05,
+        "clipping_tolerance_pt": 0.5
+      },
+      "findings": []
+    }
+  },
+  {
+    "figure": "arrival_hour.pdf",
+    "text": {
+      "auditable": true,
+      "minimum_required_pt": 5.0,
+      "minimum_found_pt": 8.0,
+      "text_run_count": 5,
+      "below_minimum_count": 0,
+      "below_minimum": [],
+      "warnings": []
+    },
+    "collision": {
+      "pdf": "analysis\\workload_profile\\figures\\arrival_hour.pdf",
+      "auditable": true,
+      "verdict": "PASS",
+      "page_count": 1,
+      "visible_text_box_count": 17,
+      "text_trace_count": 17,
+      "stroke_path_count": 22,
+      "filled_region_count": 40,
+      "image_region_count": 0,
+      "summary": {
+        "fail": 0,
+        "warn": 0,
+        "contained_fill_overlays": 0,
+        "contained_image_overlays": 0
+      },
+      "thresholds": {
+        "text_inset_pt": 0.6,
+        "min_overlap_ratio": 0.05,
+        "clipping_tolerance_pt": 0.5
+      },
+      "findings": []
+    }
+  },
+  {
+    "figure": "arrival_timeseries.pdf",
+    "text": {
+      "auditable": true,
+      "minimum_required_pt": 5.0,
+      "minimum_found_pt": 8.0,
+      "text_run_count": 5,
+      "below_minimum_count": 0,
+      "below_minimum": [],
+      "warnings": []
+    },
+    "collision": {
+      "pdf": "analysis\\workload_profile\\figures\\arrival_timeseries.pdf",
+      "auditable": true,
+      "verdict": "PASS",
+      "page_count": 1,
+      "visible_text_box_count": 17,
+      "text_trace_count": 17,
+      "stroke_path_count": 24,
+      "filled_region_count": 16,
+      "image_region_count": 0,
+      "summary": {
+        "fail": 0,
+        "warn": 0,
+        "contained_fill_overlays": 0,
+        "contained_image_overlays": 0
+      },
+      "thresholds": {
+        "text_inset_pt": 0.6,
+        "min_overlap_ratio": 0.05,
+        "clipping_tolerance_pt": 0.5
+      },
+      "findings": []
+    }
+  },
+  {
+    "figure": "arrival_weekday.pdf",
+    "text": {
+      "auditable": true,
+      "minimum_required_pt": 5.0,
+      "minimum_found_pt": 8.0,
+      "text_run_count": 5,
+      "below_minimum_count": 0,
+      "below_minimum": [],
+      "warnings": []
+    },
+    "collision": {
+      "pdf": "analysis\\workload_profile\\figures\\arrival_weekday.pdf",
+      "auditable": true,
+      "verdict": "PASS",
+      "page_count": 1,
+      "visible_text_box_count": 19,
+      "text_trace_count": 19,
+      "stroke_path_count": 27,
+      "filled_region_count": 25,
+      "image_region_count": 0,
+      "summary": {
+        "fail": 0,
+        "warn": 0,
+        "contained_fill_overlays": 0,
+        "contained_image_overlays": 0
+      },
+      "thresholds": {
+        "text_inset_pt": 0.6,
+        "min_overlap_ratio": 0.05,
+        "clipping_tolerance_pt": 0.5
+      },
+      "findings": []
+    }
+  },
+  {
+    "figure": "avg_gpu_wrk_mem_cdf.pdf",
+    "text": {
+      "auditable": true,
+      "minimum_required_pt": 5.0,
+      "minimum_found_pt": 8.0,
+      "text_run_count": 5,
+      "below_minimum_count": 0,
+      "below_minimum": [],
+      "warnings": []
+    },
+    "collision": {
+      "pdf": "analysis\\workload_profile\\figures\\avg_gpu_wrk_mem_cdf.pdf",
+      "auditable": true,
+      "verdict": "PASS",
+      "page_count": 1,
+      "visible_text_box_count": 17,
+      "text_trace_count": 17,
+      "stroke_path_count": 23,
+      "filled_region_count": 16,
+      "image_region_count": 0,
+      "summary": {
+        "fail": 0,
+        "warn": 0,
+        "contained_fill_overlays": 0,
+        "contained_image_overlays": 0
+      },
+      "thresholds": {
+        "text_inset_pt": 0.6,
+        "min_overlap_ratio": 0.05,
+        "clipping_tolerance_pt": 0.5
+      },
+      "findings": []
+    }
+  },
+  {
+    "figure": "avg_gpu_wrk_mem_hist.pdf",
+    "text": {
+      "auditable": true,
+      "minimum_required_pt": 5.0,
+      "minimum_found_pt": 8.0,
+      "text_run_count": 5,
+      "below_minimum_count": 0,
+      "below_minimum": [],
+      "warnings": []
+    },
+    "collision": {
+      "pdf": "analysis\\workload_profile\\figures\\avg_gpu_wrk_mem_hist.pdf",
+      "auditable": true,
+      "verdict": "PASS",
+      "page_count": 1,
+      "visible_text_box_count": 18,
+      "text_trace_count": 18,
+      "stroke_path_count": 99,
+      "filled_region_count": 92,
+      "image_region_count": 0,
+      "summary": {
+        "fail": 0,
+        "warn": 0,
+        "contained_fill_overlays": 0,
+        "contained_image_overlays": 0
+      },
+      "thresholds": {
+        "text_inset_pt": 0.6,
+        "min_overlap_ratio": 0.05,
+        "clipping_tolerance_pt": 0.5
+      },
+      "findings": []
+    }
+  },
+  {
+    "figure": "avg_mem_cdf.pdf",
+    "text": {
+      "auditable": true,
+      "minimum_required_pt": 5.0,
+      "minimum_found_pt": 8.0,
+      "text_run_count": 5,
+      "below_minimum_count": 0,
+      "below_minimum": [],
+      "warnings": []
+    },
+    "collision": {
+      "pdf": "analysis\\workload_profile\\figures\\avg_mem_cdf.pdf",
+      "auditable": true,
+      "verdict": "PASS",
+      "page_count": 1,
+      "visible_text_box_count": 14,
+      "text_trace_count": 14,
+      "stroke_path_count": 20,
+      "filled_region_count": 13,
+      "image_region_count": 0,
+      "summary": {
+        "fail": 0,
+        "warn": 0,
+        "contained_fill_overlays": 0,
+        "contained_image_overlays": 0
+      },
+      "thresholds": {
+        "text_inset_pt": 0.6,
+        "min_overlap_ratio": 0.05,
+        "clipping_tolerance_pt": 0.5
+      },
+      "findings": []
+    }
+  },
+  {
+    "figure": "avg_mem_hist.pdf",
+    "text": {
+      "auditable": true,
+      "minimum_required_pt": 5.0,
+      "minimum_found_pt": 8.0,
+      "text_run_count": 5,
+      "below_minimum_count": 0,
+      "below_minimum": [],
+      "warnings": []
+    },
+    "collision": {
+      "pdf": "analysis\\workload_profile\\figures\\avg_mem_hist.pdf",
+      "auditable": true,
+      "verdict": "PASS",
+      "page_count": 1,
+      "visible_text_box_count": 17,
+      "text_trace_count": 17,
+      "stroke_path_count": 100,
+      "filled_region_count": 91,
+      "image_region_count": 0,
+      "summary": {
+        "fail": 0,
+        "warn": 0,
+        "contained_fill_overlays": 0,
+        "contained_image_overlays": 0
+      },
+      "thresholds": {
+        "text_inset_pt": 0.6,
+        "min_overlap_ratio": 0.05,
+        "clipping_tolerance_pt": 0.5
+      },
+      "findings": []
+    }
+  },
+  {
+    "figure": "bandwidth_gb_cdf.pdf",
+    "text": {
+      "auditable": true,
+      "minimum_required_pt": 5.0,
+      "minimum_found_pt": 8.0,
+      "text_run_count": 5,
+      "below_minimum_count": 0,
+      "below_minimum": [],
+      "warnings": []
+    },
+    "collision": {
+      "pdf": "analysis\\workload_profile\\figures\\bandwidth_gb_cdf.pdf",
+      "auditable": true,
+      "verdict": "PASS",
+      "page_count": 1,
+      "visible_text_box_count": 17,
+      "text_trace_count": 17,
+      "stroke_path_count": 23,
+      "filled_region_count": 16,
+      "image_region_count": 0,
+      "summary": {
+        "fail": 0,
+        "warn": 0,
+        "contained_fill_overlays": 0,
+        "contained_image_overlays": 0
+      },
+      "thresholds": {
+        "text_inset_pt": 0.6,
+        "min_overlap_ratio": 0.05,
+        "clipping_tolerance_pt": 0.5
+      },
+      "findings": []
+    }
+  },
+  {
+    "figure": "bandwidth_gb_hist.pdf",
+    "text": {
+      "auditable": true,
+      "minimum_required_pt": 5.0,
+      "minimum_found_pt": 8.0,
+      "text_run_count": 5,
+      "below_minimum_count": 0,
+      "below_minimum": [],
+      "warnings": []
+    },
+    "collision": {
+      "pdf": "analysis\\workload_profile\\figures\\bandwidth_gb_hist.pdf",
+      "auditable": true,
+      "verdict": "PASS",
+      "page_count": 1,
+      "visible_text_box_count": 20,
+      "text_trace_count": 20,
+      "stroke_path_count": 103,
+      "filled_region_count": 94,
+      "image_region_count": 0,
+      "summary": {
+        "fail": 0,
+        "warn": 0,
+        "contained_fill_overlays": 0,
+        "contained_image_overlays": 0
+      },
+      "thresholds": {
+        "text_inset_pt": 0.6,
+        "min_overlap_ratio": 0.05,
+        "clipping_tolerance_pt": 0.5
+      },
+      "findings": []
+    }
+  },
+  {
+    "figure": "concurrency_cpu.pdf",
+    "text": {
+      "auditable": true,
+      "minimum_required_pt": 5.0,
+      "minimum_found_pt": 8.0,
+      "text_run_count": 6,
+      "below_minimum_count": 0,
+      "below_minimum": [],
+      "warnings": []
+    },
+    "collision": {
+      "pdf": "analysis\\workload_profile\\figures\\concurrency_cpu.pdf",
+      "auditable": true,
+      "verdict": "PASS",
+      "page_count": 1,
+      "visible_text_box_count": 19,
+      "text_trace_count": 19,
+      "stroke_path_count": 27,
+      "filled_region_count": 16,
+      "image_region_count": 0,
+      "summary": {
+        "fail": 0,
+        "warn": 0,
+        "contained_fill_overlays": 0,
+        "contained_image_overlays": 0
+      },
+      "thresholds": {
+        "text_inset_pt": 0.6,
+        "min_overlap_ratio": 0.05,
+        "clipping_tolerance_pt": 0.5
+      },
+      "findings": []
+    }
+  },
+  {
+    "figure": "concurrency_gpu.pdf",
+    "text": {
+      "auditable": true,
+      "minimum_required_pt": 5.0,
+      "minimum_found_pt": 8.0,
+      "text_run_count": 6,
+      "below_minimum_count": 0,
+      "below_minimum": [],
+      "warnings": []
+    },
+    "collision": {
+      "pdf": "analysis\\workload_profile\\figures\\concurrency_gpu.pdf",
+      "auditable": true,
+      "verdict": "PASS",
+      "page_count": 1,
+      "visible_text_box_count": 17,
+      "text_trace_count": 17,
+      "stroke_path_count": 23,
+      "filled_region_count": 14,
+      "image_region_count": 0,
+      "summary": {
+        "fail": 0,
+        "warn": 0,
+        "contained_fill_overlays": 0,
+        "contained_image_overlays": 0
+      },
+      "thresholds": {
+        "text_inset_pt": 0.6,
+        "min_overlap_ratio": 0.05,
+        "clipping_tolerance_pt": 0.5
+      },
+      "findings": []
+    }
+  },
+  {
+    "figure": "concurrency_gpu_memory.pdf",
+    "text": {
+      "auditable": true,
+      "minimum_required_pt": 5.0,
+      "minimum_found_pt": 8.0,
+      "text_run_count": 6,
+      "below_minimum_count": 0,
+      "below_minimum": [],
+      "warnings": []
+    },
+    "collision": {
+      "pdf": "analysis\\workload_profile\\figures\\concurrency_gpu_memory.pdf",
+      "auditable": true,
+      "verdict": "PASS",
+      "page_count": 1,
+      "visible_text_box_count": 17,
+      "text_trace_count": 17,
+      "stroke_path_count": 23,
+      "filled_region_count": 14,
+      "image_region_count": 0,
+      "summary": {
+        "fail": 0,
+        "warn": 0,
+        "contained_fill_overlays": 0,
+        "contained_image_overlays": 0
+      },
+      "thresholds": {
+        "text_inset_pt": 0.6,
+        "min_overlap_ratio": 0.05,
+        "clipping_tolerance_pt": 0.5
+      },
+      "findings": []
+    }
+  },
+  {
+    "figure": "concurrency_memory.pdf",
+    "text": {
+      "auditable": true,
+      "minimum_required_pt": 5.0,
+      "minimum_found_pt": 8.0,
+      "text_run_count": 6,
+      "below_minimum_count": 0,
+      "below_minimum": [],
+      "warnings": []
+    },
+    "collision": {
+      "pdf": "analysis\\workload_profile\\figures\\concurrency_memory.pdf",
+      "auditable": true,
+      "verdict": "PASS",
+      "page_count": 1,
+      "visible_text_box_count": 18,
+      "text_trace_count": 18,
+      "stroke_path_count": 25,
+      "filled_region_count": 15,
+      "image_region_count": 0,
+      "summary": {
+        "fail": 0,
+        "warn": 0,
+        "contained_fill_overlays": 0,
+        "contained_image_overlays": 0
+      },
+      "thresholds": {
+        "text_inset_pt": 0.6,
+        "min_overlap_ratio": 0.05,
+        "clipping_tolerance_pt": 0.5
+      },
+      "findings": []
+    }
+  },
+  {
+    "figure": "concurrency_tasks.pdf",
+    "text": {
+      "auditable": true,
+      "minimum_required_pt": 5.0,
+      "minimum_found_pt": 8.0,
+      "text_run_count": 6,
+      "below_minimum_count": 0,
+      "below_minimum": [],
+      "warnings": []
+    },
+    "collision": {
+      "pdf": "analysis\\workload_profile\\figures\\concurrency_tasks.pdf",
+      "auditable": true,
+      "verdict": "PASS",
+      "page_count": 1,
+      "visible_text_box_count": 20,
+      "text_trace_count": 20,
+      "stroke_path_count": 29,
+      "filled_region_count": 17,
+      "image_region_count": 0,
+      "summary": {
+        "fail": 0,
+        "warn": 0,
+        "contained_fill_overlays": 0,
+        "contained_image_overlays": 0
+      },
+      "thresholds": {
+        "text_inset_pt": 0.6,
+        "min_overlap_ratio": 0.05,
+        "clipping_tolerance_pt": 0.5
+      },
+      "findings": []
+    }
+  },
+  {
+    "figure": "cpu_usage_cdf.pdf",
+    "text": {
+      "auditable": true,
+      "minimum_required_pt": 5.0,
+      "minimum_found_pt": 8.0,
+      "text_run_count": 5,
+      "below_minimum_count": 0,
+      "below_minimum": [],
+      "warnings": []
+    },
+    "collision": {
+      "pdf": "analysis\\workload_profile\\figures\\cpu_usage_cdf.pdf",
+      "auditable": true,
+      "verdict": "PASS",
+      "page_count": 1,
+      "visible_text_box_count": 15,
+      "text_trace_count": 15,
+      "stroke_path_count": 21,
+      "filled_region_count": 14,
+      "image_region_count": 0,
+      "summary": {
+        "fail": 0,
+        "warn": 0,
+        "contained_fill_overlays": 0,
+        "contained_image_overlays": 0
+      },
+      "thresholds": {
+        "text_inset_pt": 0.6,
+        "min_overlap_ratio": 0.05,
+        "clipping_tolerance_pt": 0.5
+      },
+      "findings": []
+    }
+  },
+  {
+    "figure": "cpu_usage_hist.pdf",
+    "text": {
+      "auditable": true,
+      "minimum_required_pt": 5.0,
+      "minimum_found_pt": 8.0,
+      "text_run_count": 5,
+      "below_minimum_count": 0,
+      "below_minimum": [],
+      "warnings": []
+    },
+    "collision": {
+      "pdf": "analysis\\workload_profile\\figures\\cpu_usage_hist.pdf",
+      "auditable": true,
+      "verdict": "PASS",
+      "page_count": 1,
+      "visible_text_box_count": 18,
+      "text_trace_count": 18,
+      "stroke_path_count": 101,
+      "filled_region_count": 92,
+      "image_region_count": 0,
+      "summary": {
+        "fail": 0,
+        "warn": 0,
+        "contained_fill_overlays": 0,
+        "contained_image_overlays": 0
+      },
+      "thresholds": {
+        "text_inset_pt": 0.6,
+        "min_overlap_ratio": 0.05,
+        "clipping_tolerance_pt": 0.5
+      },
+      "findings": []
+    }
+  },
+  {
+    "figure": "datacenter_cpu_cores.pdf",
+    "text": {
+      "auditable": true,
+      "minimum_required_pt": 5.0,
+      "minimum_found_pt": 8.0,
+      "text_run_count": 5,
+      "below_minimum_count": 0,
+      "below_minimum": [],
+      "warnings": []
+    },
+    "collision": {
+      "pdf": "analysis\\workload_profile\\figures\\datacenter_cpu_cores.pdf",
+      "auditable": true,
+      "verdict": "PASS",
+      "page_count": 1,
+      "visible_text_box_count": 17,
+      "text_trace_count": 17,
+      "stroke_path_count": 40,
+      "filled_region_count": 31,
+      "image_region_count": 0,
+      "summary": {
+        "fail": 0,
+        "warn": 0,
+        "contained_fill_overlays": 0,
+        "contained_image_overlays": 0
+      },
+      "thresholds": {
+        "text_inset_pt": 0.6,
+        "min_overlap_ratio": 0.05,
+        "clipping_tolerance_pt": 0.5
+      },
+      "findings": []
+    }
+  },
+  {
+    "figure": "datacenter_gpu_equiv.pdf",
+    "text": {
+      "auditable": true,
+      "minimum_required_pt": 5.0,
+      "minimum_found_pt": 8.0,
+      "text_run_count": 5,
+      "below_minimum_count": 0,
+      "below_minimum": [],
+      "warnings": []
+    },
+    "collision": {
+      "pdf": "analysis\\workload_profile\\figures\\datacenter_gpu_equiv.pdf",
+      "auditable": true,
+      "verdict": "PASS",
+      "page_count": 1,
+      "visible_text_box_count": 15,
+      "text_trace_count": 15,
+      "stroke_path_count": 36,
+      "filled_region_count": 29,
+      "image_region_count": 0,
+      "summary": {
+        "fail": 0,
+        "warn": 0,
+        "contained_fill_overlays": 0,
+        "contained_image_overlays": 0
+      },
+      "thresholds": {
+        "text_inset_pt": 0.6,
+        "min_overlap_ratio": 0.05,
+        "clipping_tolerance_pt": 0.5
+      },
+      "findings": []
+    }
+  },
+  {
+    "figure": "datacenter_memory_gb.pdf",
+    "text": {
+      "auditable": true,
+      "minimum_required_pt": 5.0,
+      "minimum_found_pt": 8.0,
+      "text_run_count": 5,
+      "below_minimum_count": 0,
+      "below_minimum": [],
+      "warnings": []
+    },
+    "collision": {
+      "pdf": "analysis\\workload_profile\\figures\\datacenter_memory_gb.pdf",
+      "auditable": true,
+      "verdict": "PASS",
+      "page_count": 1,
+      "visible_text_box_count": 16,
+      "text_trace_count": 16,
+      "stroke_path_count": 38,
+      "filled_region_count": 30,
+      "image_region_count": 0,
+      "summary": {
+        "fail": 0,
+        "warn": 0,
+        "contained_fill_overlays": 0,
+        "contained_image_overlays": 0
+      },
+      "thresholds": {
+        "text_inset_pt": 0.6,
+        "min_overlap_ratio": 0.05,
+        "clipping_tolerance_pt": 0.5
+      },
+      "findings": []
+    }
+  },
+  {
+    "figure": "datacenter_origins.pdf",
+    "text": {
+      "auditable": true,
+      "minimum_required_pt": 5.0,
+      "minimum_found_pt": 8.0,
+      "text_run_count": 5,
+      "below_minimum_count": 0,
+      "below_minimum": [],
+      "warnings": []
+    },
+    "collision": {
+      "pdf": "analysis\\workload_profile\\figures\\datacenter_origins.pdf",
+      "auditable": true,
+      "verdict": "PASS",
+      "page_count": 1,
+      "visible_text_box_count": 17,
+      "text_trace_count": 17,
+      "stroke_path_count": 40,
+      "filled_region_count": 31,
+      "image_region_count": 0,
+      "summary": {
+        "fail": 0,
+        "warn": 0,
+        "contained_fill_overlays": 0,
+        "contained_image_overlays": 0
+      },
+      "thresholds": {
+        "text_inset_pt": 0.6,
+        "min_overlap_ratio": 0.05,
+        "clipping_tolerance_pt": 0.5
+      },
+      "findings": []
+    }
+  },
+  {
+    "figure": "duration_min_cdf.pdf",
+    "text": {
+      "auditable": true,
+      "minimum_required_pt": 5.0,
+      "minimum_found_pt": 8.0,
+      "text_run_count": 5,
+      "below_minimum_count": 0,
+      "below_minimum": [],
+      "warnings": []
+    },
+    "collision": {
+      "pdf": "analysis\\workload_profile\\figures\\duration_min_cdf.pdf",
+      "auditable": true,
+      "verdict": "PASS",
+      "page_count": 1,
+      "visible_text_box_count": 18,
+      "text_trace_count": 18,
+      "stroke_path_count": 24,
+      "filled_region_count": 17,
+      "image_region_count": 0,
+      "summary": {
+        "fail": 0,
+        "warn": 0,
+        "contained_fill_overlays": 0,
+        "contained_image_overlays": 0
+      },
+      "thresholds": {
+        "text_inset_pt": 0.6,
+        "min_overlap_ratio": 0.05,
+        "clipping_tolerance_pt": 0.5
+      },
+      "findings": []
+    }
+  },
+  {
+    "figure": "duration_min_hist.pdf",
+    "text": {
+      "auditable": true,
+      "minimum_required_pt": 5.0,
+      "minimum_found_pt": 8.0,
+      "text_run_count": 5,
+      "below_minimum_count": 0,
+      "below_minimum": [],
+      "warnings": []
+    },
+    "collision": {
+      "pdf": "analysis\\workload_profile\\figures\\duration_min_hist.pdf",
+      "auditable": true,
+      "verdict": "PASS",
+      "page_count": 1,
+      "visible_text_box_count": 19,
+      "text_trace_count": 19,
+      "stroke_path_count": 100,
+      "filled_region_count": 93,
+      "image_region_count": 0,
+      "summary": {
+        "fail": 0,
+        "warn": 0,
+        "contained_fill_overlays": 0,
+        "contained_image_overlays": 0
+      },
+      "thresholds": {
+        "text_inset_pt": 0.6,
+        "min_overlap_ratio": 0.05,
+        "clipping_tolerance_pt": 0.5
+      },
+      "findings": []
+    }
+  },
+  {
+    "figure": "gpu_vs_gpu_memory.pdf",
+    "text": {
+      "auditable": true,
+      "minimum_required_pt": 5.0,
+      "minimum_found_pt": 5.6,
+      "text_run_count": 16,
+      "below_minimum_count": 0,
+      "below_minimum": [],
+      "warnings": []
+    },
+    "collision": {
+      "pdf": "analysis\\workload_profile\\figures\\gpu_vs_gpu_memory.pdf",
+      "auditable": true,
+      "verdict": "PASS",
+      "page_count": 1,
+      "visible_text_box_count": 26,
+      "text_trace_count": 31,
+      "stroke_path_count": 579,
+      "filled_region_count": 571,
+      "image_region_count": 1,
+      "summary": {
+        "fail": 0,
+        "warn": 0,
+        "contained_fill_overlays": 0,
+        "contained_image_overlays": 0
+      },
+      "thresholds": {
+        "text_inset_pt": 0.6,
+        "min_overlap_ratio": 0.05,
+        "clipping_tolerance_pt": 0.5
+      },
+      "findings": []
+    }
+  },
+  {
+    "figure": "gpu_wrk_util_cdf.pdf",
+    "text": {
+      "auditable": true,
+      "minimum_required_pt": 5.0,
+      "minimum_found_pt": 8.0,
+      "text_run_count": 5,
+      "below_minimum_count": 0,
+      "below_minimum": [],
+      "warnings": []
+    },
+    "collision": {
+      "pdf": "analysis\\workload_profile\\figures\\gpu_wrk_util_cdf.pdf",
+      "auditable": true,
+      "verdict": "PASS",
+      "page_count": 1,
+      "visible_text_box_count": 18,
+      "text_trace_count": 18,
+      "stroke_path_count": 24,
+      "filled_region_count": 17,
+      "image_region_count": 0,
+      "summary": {
+        "fail": 0,
+        "warn": 0,
+        "contained_fill_overlays": 0,
+        "contained_image_overlays": 0
+      },
+      "thresholds": {
+        "text_inset_pt": 0.6,
+        "min_overlap_ratio": 0.05,
+        "clipping_tolerance_pt": 0.5
+      },
+      "findings": []
+    }
+  },
+  {
+    "figure": "gpu_wrk_util_hist.pdf",
+    "text": {
+      "auditable": true,
+      "minimum_required_pt": 5.0,
+      "minimum_found_pt": 8.0,
+      "text_run_count": 5,
+      "below_minimum_count": 0,
+      "below_minimum": [],
+      "warnings": []
+    },
+    "collision": {
+      "pdf": "analysis\\workload_profile\\figures\\gpu_wrk_util_hist.pdf",
+      "auditable": true,
+      "verdict": "PASS",
+      "page_count": 1,
+      "visible_text_box_count": 20,
+      "text_trace_count": 20,
+      "stroke_path_count": 102,
+      "filled_region_count": 94,
+      "image_region_count": 0,
+      "summary": {
+        "fail": 0,
+        "warn": 0,
+        "contained_fill_overlays": 0,
+        "contained_image_overlays": 0
+      },
+      "thresholds": {
+        "text_inset_pt": 0.6,
+        "min_overlap_ratio": 0.05,
+        "clipping_tolerance_pt": 0.5
+      },
+      "findings": []
+    }
+  },
+  {
+    "figure": "interarrival_exact_cdf.pdf",
+    "text": {
+      "auditable": true,
+      "minimum_required_pt": 5.0,
+      "minimum_found_pt": 5.6,
+      "text_run_count": 12,
+      "below_minimum_count": 0,
+      "below_minimum": [],
+      "warnings": []
+    },
+    "collision": {
+      "pdf": "analysis\\workload_profile\\figures\\interarrival_exact_cdf.pdf",
+      "auditable": true,
+      "verdict": "PASS",
+      "page_count": 1,
+      "visible_text_box_count": 14,
+      "text_trace_count": 18,
+      "stroke_path_count": 20,
+      "filled_region_count": 13,
+      "image_region_count": 0,
+      "summary": {
+        "fail": 0,
+        "warn": 0,
+        "contained_fill_overlays": 0,
+        "contained_image_overlays": 0
+      },
+      "thresholds": {
+        "text_inset_pt": 0.6,
+        "min_overlap_ratio": 0.05,
+        "clipping_tolerance_pt": 0.5
+      },
+      "findings": []
+    }
+  },
+  {
+    "figure": "interarrival_sim_cdf.pdf",
+    "text": {
+      "auditable": true,
+      "minimum_required_pt": 5.0,
+      "minimum_found_pt": 5.6,
+      "text_run_count": 12,
+      "below_minimum_count": 0,
+      "below_minimum": [],
+      "warnings": []
+    },
+    "collision": {
+      "pdf": "analysis\\workload_profile\\figures\\interarrival_sim_cdf.pdf",
+      "auditable": true,
+      "verdict": "PASS",
+      "page_count": 1,
+      "visible_text_box_count": 14,
+      "text_trace_count": 18,
+      "stroke_path_count": 20,
+      "filled_region_count": 13,
+      "image_region_count": 0,
+      "summary": {
+        "fail": 0,
+        "warn": 0,
+        "contained_fill_overlays": 0,
+        "contained_image_overlays": 0
+      },
+      "thresholds": {
+        "text_inset_pt": 0.6,
+        "min_overlap_ratio": 0.05,
+        "clipping_tolerance_pt": 0.5
+      },
+      "findings": []
+    }
+  },
+  {
+    "figure": "resource_correlation.pdf",
+    "text": {
+      "auditable": true,
+      "minimum_required_pt": 5.0,
+      "minimum_found_pt": 8.0,
+      "text_run_count": 8,
+      "below_minimum_count": 0,
+      "below_minimum": [],
+      "warnings": []
+    },
+    "collision": {
+      "pdf": "analysis\\workload_profile\\figures\\resource_correlation.pdf",
+      "auditable": true,
+      "verdict": "PASS",
+      "page_count": 1,
+      "visible_text_box_count": 48,
+      "text_trace_count": 48,
+      "stroke_path_count": 22,
+      "filled_region_count": 22,
+      "image_region_count": 2,
+      "summary": {
+        "fail": 0,
+        "warn": 0,
+        "contained_fill_overlays": 0,
+        "contained_image_overlays": 0
+      },
+      "thresholds": {
+        "text_inset_pt": 0.6,
+        "min_overlap_ratio": 0.05,
+        "clipping_tolerance_pt": 0.5
+      },
+      "findings": []
+    }
+  }
+]

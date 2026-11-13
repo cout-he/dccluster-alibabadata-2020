@@ -1,0 +1,73 @@
+{
+  "records_full": 1300144,
+  "records_base": 162518,
+  "cycles": 8,
+  "interval_rows_full": 37552,
+  "interval_rows_base": 4694,
+  "start": "2020-01-01 00:00:00+00:00",
+  "end_exclusive": "2021-01-27 00:00:00+00:00",
+  "task_scale": 5,
+  "scale": 1,
+  "group_size": 1,
+  "gpu_zero_fraction": 0.30327717545133465,
+  "gpu_positive_fraction": 0.6967228245486654,
+  "gpu_top_decile_threshold": 65.69561403508787,
+  "gpu_top_decile_fraction": 0.10000123063291451,
+  "bandwidth_aggregate_ratio": 25.89533154064483,
+  "weekday_mismatch_fraction": 1.0,
+  "span_missing": 571,
+  "offset_mean": 454.10532371798814,
+  "offset_max": 899.0,
+  "input_hashes": {
+    "data/workload/alibaba_2020_dataset/result_df_full_year_2020.pkl": "3ba8a8e0067288f8d2542752a292f7da04cb79305689ba145cc6060e96cb7f2e",
+    "utils/workload_utils.py": "db779547296511998029e6636b62feec7028b8282b580ca43b24277f52a05130",
+    "rl_components/task.py": "f6116d6c0c8d6474c8c316fa1f790deb84e9016811970bdabf76dc8cb743b6e9",
+    "data/workload/alibaba_2020_dataset/extract_dataset_from_dfas.py": "5aeae21d7adf8114a3290fcbb505efae13795731bdd81163f8918511138c8d0f",
+    "data/workload/alibaba_2020_dataset/alibaba_utils.py": "faaa571115cde969885b87ffdfb9bb6100abe1ea3b8d548e32676f822250d08f",
+    "data/workload/alibaba_2020_dataset/alibaba_analysis.ipynb": "11dbcecad6289a132424aab6621a5117bae8a737aff264556213e65f7f8da795",
+    "simulation/cluster_manager.py": "6e950aaa9af384b8b3d56103c876750581ce68684ed9bef646c4dae221066941",
+    "configs/env/datacenters.yaml": "c3721b04da11badc5984799377536ebfc1692309da491f426d0eb5b697b11ab8",
+    "configs/env/sim_config.yaml": "9ff37fab598b22ec6a8dbfb42028ca93d74021c3672bb69fb2458d15db6aba44",
+    "envs/task_scheduling_env.py": "847344a747b748c4ed0d453a6cc330c6f0080bc132dc01d6dc3e7946484ccae5",
+    "data/network_cost/network_delay.py": "c73a64170cdfb3c59a8a504e003694d5f6700237b99210c0220a282da9019e20"
+  },
+  "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+  ],
+  "official_source": "https://github.com/alibaba/clusterdata/blob/master/cluster-trace-gpu-v2020/README.md",
+  "versions": {
+    "python": "3.13.5",
+    "numpy": "2.4.0",
+    "pandas": "2.3.3",
+    "scipy": "1.15.3"
+  },
+  "protected_inputs_unchanged": true,
+  "integral_checks": [
+    {
+      "check": "integral_exact_cold_start",
+      "max_relative_error": 1.7862768931435052e-14
+    },
+    {
+      "check": "integral_exact_periodic",
+      "max_relative_error": 1.8812826993605986e-14
+    },
+    {
+      "check": "integral_sim_cold_start",
+      "max_relative_error": 1.7905194680513287e-14
+    },
+    {
+      "check": "integral_sim_periodic",
+      "max_relative_error": 1.8966812949975067e-14
+    }
+  ],
+  "script_sha256": "4999e563e691ca840d8967f19f2833056dc725b291946f52eed7fa4969ddd265"
+}

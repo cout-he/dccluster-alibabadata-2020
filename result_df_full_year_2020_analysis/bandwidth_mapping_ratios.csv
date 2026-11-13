@@ -1,0 +1,5 @@
+﻿metric,count,missing,minimum,maximum,mean,median,p25,p50,p75,p90,p95,p99,std,zero_fraction,negative_fraction
+current_to_correct_per_record_ratio,162518,0,0,2934460.168,496.9393119,27.32011117,8.733318922,27.32011117,108.4200521,651.1351896,1317.179406,3263.680788,25219.47481,0.07031836473,0
+aggregate_ratio,,,,,25.89533154,,,,,,,,,,
+current_underestimates_fraction,,,,,0.1144365547,,,,,,,,,,
+current_overestimates_fraction,,,,,0.8855634453,,,,,,,,,,
